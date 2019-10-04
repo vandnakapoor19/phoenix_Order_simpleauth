@@ -10,7 +10,13 @@ defmodule SimpleAuth.Auth do
   end
 
   def login_by_email_and_pass(conn, email, given_pass) do
-    user = Repo.get_by(User, email: email)
+
+    # case email do
+    #   nil ->
+    #     {:error, :unauthorized, conn}
+    # end
+
+    user =  Repo.get_by(User, email: email)
 
     cond do
       user && checkpw(given_pass, user.password_hash) ->

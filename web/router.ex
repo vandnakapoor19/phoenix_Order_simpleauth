@@ -20,23 +20,39 @@ defmodule SimpleAuth.Router do
   end
 
   # ...
+  # ...
   pipeline :login_required do
+    plug Guardian.Plug.EnsureAuthenticated,
+         handler: SimpleAuth.GuardianErrorHandler
   end
+
   pipeline :admin_required do
+    plug SimpleAuth.CheckAdmin
   end
+# guest zone
+  scope "/", SimpleAuth do
+  pipe_through [:browser, :with_session]
+  get "/", PageController, :index
+  resources "/sessions", SessionController, only: [:new, :create,
+                                                   :delete]
+  resources "/users", UserController, only: [:new, :create]
 
-    # web/router.ex
-    # ...
-    scope "/", SimpleAuth do
-     pipe_through [:browser, :with_session]
-
-     get "/", PageController, :index
-
-     resources "/sessions", SessionController, only: [:new, :create, :delete]
-
-     resources "/users", UserController, only: [:show, :new, :create]
-
+  # registered user zone
+  scope "/" do
+    pipe_through [:login_required]
+    resources "/users", UserController, only: [:show] do
+      resources "/posts", PostController
     end
+
+    # admin zone
+    scope "/admin", Admin, as: :admin do
+      pipe_through [:admin_required]
+      resources "/users", UserController, only: [:index, :show] do
+        resources "/posts", PostController, only: [:index, :show]
+      end
+    end
+  end
+end
 # Other scopes may use custom stacks.
   # scope "/api", SimpleAuth do
   #   pipe_through :api
