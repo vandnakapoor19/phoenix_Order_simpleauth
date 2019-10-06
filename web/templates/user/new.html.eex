@@ -15,10 +15,19 @@
                              class: "form-control" %>
     <%= error_tag f, :name %>
   </div>
+
+  <div class="form-group">
+    <%= text_input f, :user_role_id, placeholder: "User Role",
+                             class: "form-control" %>
+    <%= error_tag f, :user_role_id %>
+  </div>
+
+
   <div class="form-group">
     <%= password_input f, :password, placeholder: "Password",
                                      class: "form-control" %>
     <%= error_tag f, :password %>
   </div>
+
   <%= submit "Create User", class: "btn btn-primary" %>
 <% end %>

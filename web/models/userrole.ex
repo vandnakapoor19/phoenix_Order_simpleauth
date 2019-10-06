@@ -5,6 +5,7 @@ defmodule SimpleAuth.UserRole do
     field :title, :string
     field :status, :boolean, default: true
 
+    has_many :users, SimpleAuth.User
     timestamps()
   end
 

@@ -37,6 +37,25 @@ defmodule SimpleAuth.Router do
                                                    :delete]
   resources "/users", UserController, only: [:new, :create]
   resources "/orders", OrderController
+
+  # registered user zone
+    scope "/" do
+      pipe_through [:login_required]
+
+      resources "/users", UserController, only: [:show] do
+        resources "/orders", OrderController
+      end
+
+      # admin zone
+      scope "/admin", Admin, as: :admin do
+        pipe_through [:admin_required]
+
+        resources "/users", UserController, only: [:index, :show] do
+          resources "/orders", OrderController, only: [:index, :show]
+        end
+      end
+    end
+
 end
 # Other scopes may use custom stacks.
   # scope "/api", SimpleAuth do

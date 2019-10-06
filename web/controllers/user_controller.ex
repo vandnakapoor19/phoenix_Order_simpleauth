@@ -1,13 +1,13 @@
 defmodule SimpleAuth.UserController do
   use SimpleAuth.Web, :controller
-  
+
   plug :scrub_params, "user" when action in [:create]
 
   alias SimpleAuth.User
 
   def show(conn, %{"id" => id}) do
       user = Repo.get!(User, id)
-
+      IO.inspect(user);
       render(conn, "show.html", user: user)
   end
 
