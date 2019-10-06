@@ -9,29 +9,34 @@
 
     <title>Hello SimpleAuth!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <!-- Compiled and minified CSS -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <%= if @current_user do %>
-              <li><%= @current_user.email %> (<%= @current_user.id %>)</li>
-              <li>
-                <%= link "Sign out", to: session_path(@conn, :delete,
-                                                      @current_user),
-                                     method: "delete" %>
-              </li>
-            <% else %>
-              <li><%= link "Register", to: user_path(@conn, :new) %></li>
-              <li><%= link "Sign in", to: session_path(@conn, :new) %></li>
-            <% end %>
-          </ul>
-        </nav>
-        <span class="logo"></span>
-      </header>
+    <header class="header">
+      <nav role="navigation">
+        <ul class="nav nav-pills pull-right">
+          <%= if @current_user do %>
+            <li><a href="/orders">Home</a></li>
+            <li><%= @current_user.email %> (<%= @current_user.id %>)</li>
+                <li><a href="/orders/new">Create Order</a></li>
+            <li>
+              <%= link "Sign out", to: session_path(@conn, :delete,
+                                                    @current_user),
+                                   method: "delete" %>
 
+            </li>
+          <% else %>
+            <li><%= link "Register", to: user_path(@conn, :new) %></li>
+            <li><%= link "Sign in", to: session_path(@conn, :new) %></li>
+          <% end %>
+        </ul>
+      </nav>
+      </header>
+    <div class="container">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 

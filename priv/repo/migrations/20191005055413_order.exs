@@ -15,7 +15,6 @@ defmodule SimpleAuth.Repo.Migrations.Order do
         add :pickup_time, :time
 
         timestamps()
-
       end
   end
 end

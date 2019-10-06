@@ -1,5 +1,7 @@
 defmodule SimpleAuth.UserController do
   use SimpleAuth.Web, :controller
+  
+  plug :scrub_params, "user" when action in [:create]
 
   alias SimpleAuth.User
 

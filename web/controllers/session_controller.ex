@@ -8,11 +8,12 @@ defmodule SimpleAuth.SessionController do
   end
 
   def create(conn, %{"session" => %{"email" => email, "password" => password}}) do
+
     case SimpleAuth.Auth.login_by_email_and_pass(conn, email, password) do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "You're now signed in!")
-        |> redirect(to: page_path(conn, :index))
+        |> redirect(to: order_path(conn, :index))
       {:error, _reason, conn} ->
         conn
         |> put_flash(:error, "Invalid email/password combination")

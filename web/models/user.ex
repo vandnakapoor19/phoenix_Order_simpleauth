@@ -8,7 +8,7 @@ defmodule SimpleAuth.User do
     field :password_hash, :string
     field :is_admin, :boolean, default: false
 
-    has_many :posts, SimpleAuth.Post
+    has_many :orders, SimpleAuth.Order
 
     timestamps()
   end

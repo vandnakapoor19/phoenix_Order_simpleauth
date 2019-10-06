@@ -1,0 +1,79 @@
+<%= form_for @changeset, order_path(@conn, :update, @order), fn f -> %>
+
+<div class="patient_form">
+  <h5>Patient Details</h5> &nbsp
+  <div class="form-row ">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Name</label>
+      <%= text_input f, :patient_name,class: "form-control" %>
+      <%= error_tag f, :patient_name %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <%= text_input f, :patient_email, class: "form-control" %>
+      <%= error_tag f, :patient_email %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Contact Number</label>
+      <%= text_input f, :patient_contact, class: "form-control" %>
+      <%= error_tag f, :patient_contact %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Street Address</label>
+      <%=text_input  f, :patient_address, class: "form-control" %>
+      <%= error_tag f, :patient_address %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <%= text_input f, :address1, placeholder: "Appartment, Suit, Unit, Building, Floor, etc",class: "form-control" %>
+      <%= error_tag f, :address1 %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputEmail4">City</label>
+      <%= text_input f, :patient_city,class: "form-control" %>
+      <%= error_tag f, :patient_city %>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputEmail4">State</label>
+      <%=text_input  f, :patient_state, class: "form-control" %>
+      <%= error_tag f, :patient_state %>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputEmail4">Zip</label>
+      <%=text_input  f, :patient_zipcode, class: "form-control" %>
+      <%= error_tag f, :patient_zipcode %>
+    </div>
+  </div>
+
+</div>
+<div class="patient_form">
+  <h5>Order Information</h5> &nbsp
+  <div class="form-row ">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Pickup Date <span class=info>(Date format should be (YY-DD-MM like 2012-02-11)</span></label>
+      <%= text_input f, :pickup_date, class: "form-control" %>
+      <%= error_tag f, :pickup_date %>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Pickup Time</label>
+      <%= text_input f, :pickup_time, class: "form-control" %>
+      <%= error_tag f, :pickup_time %>
+    </div>
+  </div>
+  <div class="form-row ">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Order Details</label>
+      <%= text_input f, :order_details, class: "form-control" %>
+      <%= error_tag f, :order_details %>
+    </div>
+  </div>
+</div>
+
+
+<%= submit "Edit Order", class: "btn btn-primary" %>
+<% end %>

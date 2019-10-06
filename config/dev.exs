@@ -38,6 +38,6 @@ config :simple_auth, SimpleAuth.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "admin",
-  database: "simple_auth_dev",
+  database: "simple_auth",
   hostname: "localhost",
   pool_size: 10

@@ -1,0 +1,27 @@
+<h5>Orders</h5>
+<table>
+  <tr>
+    <th>Order #</th>
+    <th>Name</th>
+    <th>Contact Number</th>
+    <th>Pickup Date</th>
+    <th>Pickup Time</th>
+    <th>Order Status</th>
+    <th>Action</th>
+  </tr>
+  <%= for order <-@orders do %>
+    <tr class="collection-item">
+    <td><%= order.order_number %></td>
+    <td><%= order.patient_name %></td>
+    <td><%= order.patient_contact %></td>
+    <td><%= order.pickup_date %></td>
+    <td><%= order.patient_name %></td>
+    <td><%= order.patient_name %></td>
+      <td>
+          <%= link "Edit",  to: order_path(@conn, :edit , order)  %>
+          <%= link "Delete", to: order_path(@conn, :delete , order), method: :delete %>
+      </td>
+    </tr>
+
+  <% end %>
+</table>
