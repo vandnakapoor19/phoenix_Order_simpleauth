@@ -3,6 +3,8 @@ defmodule SimpleAuth.OrderController do
 
   alias SimpleAuth.Order
   alias SimpleAuth.User
+  alias SimpleAuth.UserRole
+
  plug :scrub_params, "order" when action in [:create, :update]
 
   def action(conn, _) do
@@ -12,16 +14,20 @@ defmodule SimpleAuth.OrderController do
 
   def index(conn, _params, current_user) do
     orders =  Repo.all(Order)
-    render conn, "index.html", orders: orders
+    courier  =  Repo.all(User)
+    render conn, "index.html", orders: orders , courier: courier
   end
 
   def new(conn, _params, current_user) do
+      courier  =  Repo.all(User)
     changeset = Order.changeset(%Order{}, %{})
-    render conn, "new.html", changeset: changeset
+
+      render conn, "new.html", changeset: changeset , courier: courier
   end
 
   def create(conn, %{"order"=>order}, current_user) do
     # changeset = Order.changeset(%Order{}, order)
+    courier  =  Repo.all(User)
 
     changeset =
     current_user
@@ -33,7 +39,7 @@ defmodule SimpleAuth.OrderController do
         conn
         |> put_flash(:info, "Order Created")
         |> redirect(to: order_path(conn, :index))
-      {:error,changeset}->render conn,"new.html", changeset: changeset
+      {:error,changeset}->render conn,"new.html", changeset: changeset , courier: courier
     end
   end
 

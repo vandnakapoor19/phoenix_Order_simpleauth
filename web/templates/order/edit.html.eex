@@ -1,7 +1,8 @@
 <%= form_for @changeset, order_path(@conn, :update, @order), fn f -> %>
 
 <div class="patient_form">
-  <h5>Patient Details</h5> &nbsp
+  <h5> <strong>Edit Order </strong> <%= @order.order_number %></h5>
+  <h6>Patient Details</h6> &nbsp
   <div class="form-row ">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Name</label>
@@ -73,7 +74,11 @@
     </div>
   </div>
 </div>
+<div class="Cancel-button">
+  <a href="/orders" class="btn btn-primary ">Back</a>
+</div>
 
+<a href="/orders" class="btn btn-primary ">cancel</a>
 
-<%= submit "Edit Order", class: "btn btn-primary" %>
+<%= submit "Update Order", class: "btn btn-primary pull-right" %>
 <% end %>

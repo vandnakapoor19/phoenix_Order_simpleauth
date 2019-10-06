@@ -4,18 +4,36 @@ use SimpleAuth.Web, :model
 
   schema "orders" do
     field :patient_name, :string
-    field :patient_address, :string, default: ":rand.uniform(n)"
+    field :patient_address, :string, default: ""
     field :patient_contact, :integer
+    field :patient_email, :string
     field :pickup_date, :date
-    field :patient_state, :string, default: "abc"
+    field :patient_state, :string, default: ""
+    field :patient_city, :string
+    field :patient_zipcode, :integer
+    field :pickup_time, :time
     field :order_number, :string
+    field :courier_id, :integer
+    field :order_status, :integer, default: 1
 
     belongs_to :user, SimpleAuth.User
   end
 
   def changeset(struct,params \\ %{}) do
     struct
-    |> cast(params, [:patient_name, :patient_address, :patient_contact, :pickup_date, :patient_state, :order_number])
+    |> cast(params, [
+        :patient_name,
+        :patient_address,
+        :patient_contact,
+        :patient_email,
+        :pickup_date,
+        :patient_state,
+        :patient_city,
+        :patient_zipcode,
+        :pickup_time,
+        :courier_id,
+        :order_status,
+        :order_number])
     |> validate_required(:patient_name)
     |> generate_random_number
   end

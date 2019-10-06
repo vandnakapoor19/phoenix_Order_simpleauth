@@ -19,7 +19,7 @@ defmodule SimpleAuth.Auth do
     #   resource ->
     #     {:ok,}
     # end
-    
+
     user =  Repo.get_by(User, email: email)
 
     cond do

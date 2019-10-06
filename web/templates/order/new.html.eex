@@ -1,12 +1,26 @@
-<%= form_for @changeset, order_path(@conn, :create), fn f -> %>
+<%= form_for @changeset , order_path(@conn, :create), fn f -> %>
+
+<div class="patient_form">
+  <h5>Courier</h5> &nbsp
+  <div class="form-row ">
+    <div class="form-group col-md-12">
+      <%= if user = assigns[:courier] do %>
+      <%= select f, :Courier_id, Enum.map(@courier, &{&1.email, &1.id}), id: "CourierField" ,class: "form-control" %>
+      <%= error_tag f, :Courier_id %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
 <div class="patient_form">
   <h5>Patient Details</h5> &nbsp
-  <div class="form-row ">
+<div class="form-row ">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Name</label>
       <%= text_input f, :patient_name,class: "form-control" %>
       <%= error_tag f, :patient_name %>
     </div>
+
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
       <%= text_input f, :patient_email, class: "form-control" %>
@@ -72,7 +86,11 @@
     </div>
   </div>
 </div>
+  <div class="Cancel-button">
+    <a href="/orders" class="btn btn-primary ">Back</a>
+  </div>
 
+  <a href="/orders" class="btn btn-primary ">cancel</a>
 
-  <%= submit "Create Order", class: "btn btn-primary" %>
+<%= submit "Create Order", class: "btn btn-primary pull-right" %>
 <% end %>
