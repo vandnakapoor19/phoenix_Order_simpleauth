@@ -86,7 +86,7 @@
   <div class="form-row ">
     <div class="form-group col-md-12">
       <label for="inputEmail4">Order Details</label>
-      <%= textarea f, :order_details, class: "order-info", rows: "4" , cols: "50" %>
+      <%= textarea f, :order_details, class: "order-info",row: "4" %>
       <%= error_tag f, :order_details %>
     </div>
   </div>

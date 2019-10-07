@@ -9,7 +9,7 @@ defmodule SimpleAuth.User do
     field :is_admin, :boolean, default: true
     field :user_role_id, :integer, default: 1
 
-    has_one :orders, SimpleAuth.Order
+    has_many :orders, SimpleAuth.Order
 
     timestamps()
   end

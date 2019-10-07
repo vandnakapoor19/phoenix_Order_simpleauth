@@ -27,39 +27,40 @@ defmodule SimpleAuth.OrderController do
 
   def create(conn, %{"order"=>order}, current_user) do
     # changeset = Order.changeset(%Order{}, order)
-    courier  =  Repo.all(User)
+      courier  =  Repo.all(User)
+      changeset =
+      current_user
+      |> build_assoc(:orders)
+      |> Order.changeset(order)
 
-    changeset =
-    current_user
-    |> build_assoc(:orders)
-    |> Order.changeset(order)
-
-    case  Repo.insert(changeset) do
-      {:ok, _order}->
-        conn
-        |> put_flash(:info, "Order Created")
-        |> redirect(to: order_path(conn, :index))
-      {:error,changeset}->render conn,"new.html", changeset: changeset , courier: courier
-    end
+      case  Repo.insert(changeset) do
+        {:ok, _order}->
+          conn
+          |> put_flash(:info, "Order Created")
+          |> redirect(to: order_path(conn, :index))
+        {:error,changeset}->render conn,"new.html", changeset: changeset , courier: courier
   end
+end
 
   def edit(conn, %{"id" => order_id}, current_user) do
-    order =  Repo.get(Order, order_id)
-    changeset  =  Order.changeset(order)
-    render conn, "edit.html", changeset: changeset , order: order
+      order =  Repo.get(Order, order_id)
+      changeset  =  Order.changeset(order)
+      courier  =  Repo.all(User)
+      render conn, "edit.html", changeset: changeset , order: order , courier: courier
   end
 
-  def update(conn, %{"id"=>order_id, "order"=>order}) do
+  def update(conn, %{"id"=>order_id, "order"=>order},current_user) do
     old_order = Repo.get(Order, order_id)
     changeset = Order.changeset(old_order,order)
-
+    courier  =  Repo.all(User)
+    IO.inspect(order)
     case Repo.update(changeset) do
       {:ok,_order}->
       conn
       |> put_flash(:info, "Order Updated")
       |> redirect(to: order_path(conn, :index))
       {:error, changeset}->
-        render conn, "edit.html", changeset: changeset, order:  old_order
+        render conn, "edit.html", changeset: changeset, order:  old_order , courier: courier
     end
   end
 

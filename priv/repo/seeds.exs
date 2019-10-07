@@ -22,3 +22,30 @@ alias SimpleAuth.Useradmin_params = %{
   |> User.registration_changeset(admin_params)
   |> Repo.insert!
 end
+
+alias SimpleAuth.Records
+
+album_data = [
+  %{
+    artist: "The Beatles",
+    title: "Abbey Road",
+    year: "1969",
+    summary: "Abbey Road is the eleventh album ..."
+  },
+  %{
+    artist: "Led Zeppelin",
+    title: "Untitled",
+    year: "1971",
+    summary: "English rock band Led Zeppelin's ..."
+  },
+  %{
+    artist: "Miles Davis",
+    title: "Kind Of Blue",
+    year: "1959",
+    summary: "Kind of Blue is a studio album by American jazz trumpeter ..."
+  }
+]
+
+Enum.each(album_data, fn(data) ->
+  Records.create_album!(data)
+end)

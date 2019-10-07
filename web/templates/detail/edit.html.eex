@@ -1,0 +1,19 @@
+<%= form_for @changeset, order_path(@conn, :update, @order), fn f -> %>
+
+<%= hidden_input f, :order_status, value: "2" , class: "form-control" %>
+<div class="patient_form">
+  <h5> <strong>Cancel Order </strong> <%= @order.order_number %></h5> &nbsp
+  <div class="form-row ">
+    <div class="form-group col-md-12">
+      <label for="inputEmail4">Description</label>
+      <%= textarea f, :order_cancel_description , required: 'required' ,  class: "form-control" , rows: "4" , cols: "50" %>
+      <%= error_tag f, :order_cancel_description %>
+    </div>
+  </div>
+</div>
+<div class="Cancel-button">
+  <a href="/orders" class="btn btn-primary btn-back" style="background-color: gray;">Back</a>
+</div>
+
+<%= submit "Submit", class: "btn btn-primary pull-right" %>
+<% end %>

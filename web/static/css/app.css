@@ -45,3 +45,151 @@ label {
   border: 1px solid #9e9e9e !important;
   height: 2.2rem  !important;
 }
+
+.info{
+  color:#cc3636;
+}
+
+.patient_form {
+  border: 1px solid #eee;;
+  float: left;
+  width: 100%;
+  padding: 1%;
+  margin: 1%;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 3px 1px -2px rgba(0,0,0,0.12),0 1px 5px 0 rgba(66, 59, 59, 0.2);
+}
+.form-control{
+  border: 1px solid #9e9e9e !important;
+  height: 2.2rem  !important;
+}
+
+.Cancel-button .btn-back {
+    background-color: #b92f2f;
+    float: left;
+    margin: 0 1% 1% 1%;
+}
+
+.container {
+    width: 100% !important;
+}
+
+.summary-nav {
+    text-align: right !important;
+}
+
+.upper-info {
+    display: block;
+    text-align: right;
+}
+
+#order_order_details{
+  margin: 0px; min-height: 127px !important; min-width: 1179px !important;
+}
+
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+#page-wrapper {
+  width: 100%;
+  background: #FFFFFF;
+  padding: 1em;
+  margin: 1em auto;
+  border-top: 5px solid #edf4ee;
+  box-shadow: 0 2px 10px rgb(77, 69, 69);
+}
+
+h1 {
+  margin-top: 0;
+}
+
+h2 {
+  margin: 1em 0;
+  font-size: 1em;
+}
+
+details {
+  border-radius: 3px;
+  background: #EEE;
+  margin: 1em 0;
+}
+
+summary {
+  background: #333;
+  color: #FFF;
+  border-radius: 3px;
+  padding: 5px 10px;
+  outline: none;
+}
+
+.nav-pills li{
+  line-height: 56px !important;
+}
+/* Style the summary when details box is open */
+details[open] summary {
+  background: #c7d2c8;
+  color: #333;
+}
+
+/* Custom Markers */
+#custom-marker summary {
+  font-size: 17px;
+  vertical-align: top;
+}
+
+#custom-marker summary::-webkit-details-marker {
+  display: none;
+}
+
+#custom-marker summary:before {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  content: "";
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/4621/treehouse-icon-sprite.png);
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+#custom-marker[open] summary:before {
+  background-position: -18px 0;
+}
+
+
+table {
+  border: 0;
+  width: 100%;
+}
+
+th, td {
+  vertical-align: top;
+  text-align: left;
+  padding: 0.5em;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+th {
+  width: 200px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+}
+
+li {
+  display: inline;
+  padding-right: 10px;
+}
+
+a {
+  color: #08C;
+  text-decoration: none;
+}

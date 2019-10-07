@@ -22,10 +22,12 @@
           <!--  -->
 
           <%= if @current_user do %>
-          <%= @current_user.user_role_id %>
-            <li><a href="/orders">Home</a></li>
-            <li><%= @current_user.email %> (<%= @current_user.user_role_id %>)</li>
+            <li><a href="/orders">Orders</a></li>
+            <li><%= @current_user.email %></li>
+            <%= if @current_user.user_role_id !=3 do %>
                 <li><a href="/orders/new">Create Order</a></li>
+              <% else %>
+              <% end %>
             <li>
               <%= link "Sign out", to: session_path(@conn, :delete,
                                                     @current_user),

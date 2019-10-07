@@ -1,5 +1,4 @@
 <%= form_for @changeset, order_path(@conn, :update, @order), fn f -> %>
-
 <div class="patient_form">
   <h5> <strong>Edit Order </strong> <%= @order.order_number %></h5>
   <h6>Patient Details</h6> &nbsp
@@ -54,6 +53,16 @@
 </div>
 <div class="patient_form">
   <h5>Order Information</h5> &nbsp
+
+  <div class="form-row ">
+    <div class="form-group col-md-12">
+      <%= if user = assigns[:courier] do %>
+      <%= select f, :courier_id, Enum.map(@courier, &{&1.email, &1.id}), prompt: "Select Courier Provider", id: "CourierField" ,class: "form-control" %>
+      <%= error_tag f, :Courier_id %>
+        <% end %>
+    </div>
+  </div>
+
   <div class="form-row ">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Pickup Date <span class=info>(Date format should be (YY-DD-MM like 2012-02-11)</span></label>
@@ -69,16 +78,15 @@
   <div class="form-row ">
     <div class="form-group col-md-12">
       <label for="inputEmail4">Order Details</label>
-      <%= text_input f, :order_details, class: "form-control" %>
+      <%= textarea f, :order_details, class: "form-control" , rows: "4" , cols: "50" %>
       <%= error_tag f, :order_details %>
     </div>
   </div>
 </div>
 <div class="Cancel-button">
-  <a href="/orders" class="btn btn-primary ">Back</a>
+  <a href="/orders" class="btn btn-primary btn-back" style="background-color: gray;">Back</a>
 </div>
 
-<a href="/orders" class="btn btn-primary ">cancel</a>
 
 <%= submit "Update Order", class: "btn btn-primary pull-right" %>
 <% end %>

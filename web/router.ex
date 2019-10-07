@@ -37,13 +37,15 @@ defmodule SimpleAuth.Router do
                                                    :delete]
   resources "/users", UserController, only: [:new, :create]
   resources "/orders", OrderController
+  resources "/orderdetails", DetailController
 
   # registered user zone
     scope "/" do
       pipe_through [:login_required]
 
       resources "/users", UserController, only: [:show] do
-        resources "/orders", OrderController
+      resources "/orders", OrderController
+      resources "/orderdetails", DetailController
       end
 
       # admin zone
@@ -51,7 +53,9 @@ defmodule SimpleAuth.Router do
         pipe_through [:admin_required]
 
         resources "/users", UserController, only: [:index, :show] do
-          resources "/orders", OrderController, only: [:index, :show]
+        resources "/orders", OrderController, only: [:index, :show]
+        resources "/orderdetails", DetailController, only: [:index, :show]
+
         end
       end
     end

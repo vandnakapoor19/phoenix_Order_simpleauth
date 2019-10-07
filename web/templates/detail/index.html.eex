@@ -1,0 +1,46 @@
+<div id="page-wrapper">
+  <details open>
+    <summary>Action</summary>
+    <ul class="summary-nav">
+      <%= if @current_user.user_role_id !=3 do %>
+        <li><a class= "btn-sm btn-primary " href=<%= detail_path(@conn, :edit, @order) %>>Cancel</a></li>
+        <li><a class= "btn-sm btn-primary " href=<%= order_path(@conn, :edit, @order) %> >Edit</a></li>
+      <% else %>
+        <%= form_for @changeset,  order_path(@conn, :update, @order), [id: "some-id"], fn f -> %>
+          <%= hidden_input f, :order_status, value: "3" , class: "form-control" %>
+          <%= submit "Delivered", class: "btn-sm btn-primary pull-right" %>
+        <% end %>
+      <% end %>
+    </ul>
+  </details>
+  <!-- Specifying an 'open' attribute will make all the content visible when the page loads -->
+  <details open>
+    <summary>Order #<%= @order.order_number %></summary>
+    <table>
+      <tr>
+        <th scope="row">Pickup Date & Time</th>
+        <td><%= @order.pickup_time %><%= @order.pickup_time %> </td>
+      </tr>
+      <tr>
+        <th scope="row">Order Number</th>
+        <td>#<%= @order.order_number %></td>
+      </tr>
+      <tr>
+        <th scope="row">Patient Information</th>
+        <td><%= @order.patient_name %>,<br>
+          <%= @order.patient_email %><br>
+          <%= @order.patient_contact %><br>
+          <%= @order.patient_address %><br>
+          <%= @order.patient_city %><br>
+          <%= @order.patient_state %><br>
+          <%= @order.patient_zipcode %><br>
+      </tr>
+      <tr>
+        <th scope="row">Order Detail</th>
+        <td>
+          <%= @order.order_details %><br>
+        </td>
+      </tr>
+    </table>
+  </details>
+</div>

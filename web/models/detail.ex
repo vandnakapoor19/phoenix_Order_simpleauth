@@ -1,4 +1,4 @@
-defmodule SimpleAuth.Order do
+defmodule SimpleAuth.Detail do
 use SimpleAuth.Web, :model
 @alphabet Enum.concat([?0..?9, ?A..?Z, ?a..?z])
 
@@ -16,8 +16,6 @@ use SimpleAuth.Web, :model
     field :courier_id, :integer
     field :order_status, :integer, default: 1
     field :user_id, :integer
-    field :order_details, :string
-    field :order_cancel_description, :string
 
      # has_many  :users, SimpleAuth.User
       # belongs_to :users, SimpleAuth.User
@@ -38,9 +36,7 @@ use SimpleAuth.Web, :model
         :pickup_time,
         :courier_id,
         :order_status,
-        :order_number,
-        :order_details,
-        :order_cancel_description])
+        :order_number])
     |> validate_required(:patient_name)
     |> generate_random_number
   end
