@@ -1,6 +1,6 @@
 # What was the hardest part of the implementation?
 
-#### The transition to Elixir platform is swift. As expected, starting 2-3 days were challenging but on 5th day I’m more comfortable and confident on it.
+#### The transition to Elixir platform is swift. As expected, intial 2-3 days were challenging but on 5th day I’m more comfortable and confident on it.
 #### Below are few of challenges:
 
 - Setting development environment on Windows machine.
