@@ -29,6 +29,7 @@ defmodule SimpleAuth.Router do
   pipeline :admin_required do
     plug SimpleAuth.CheckAdmin
   end
+
 # guest zone
   scope "/", SimpleAuth do
   pipe_through [:browser, :with_session]
@@ -39,28 +40,13 @@ defmodule SimpleAuth.Router do
   resources "/orders", OrderController
   resources "/orderdetails", DetailController
 
-  # registered user zone
-    scope "/" do
-      pipe_through [:login_required]
+  get "/*path", PageController, :index
 
-      resources "/users", UserController, only: [:show] do
-      resources "/orders", OrderController
-      resources "/orderdetails", DetailController
-      end
-
-      # admin zone
-      scope "/admin", Admin, as: :admin do
-        pipe_through [:admin_required]
-
-        resources "/users", UserController, only: [:index, :show] do
-        resources "/orders", OrderController, only: [:index, :show]
-        resources "/orderdetails", DetailController, only: [:index, :show]
-
-        end
-      end
-    end
+  get "/users*path", PageController, :index
 
 end
+
+
 # Other scopes may use custom stacks.
   # scope "/api", SimpleAuth do
   #   pipe_through :api

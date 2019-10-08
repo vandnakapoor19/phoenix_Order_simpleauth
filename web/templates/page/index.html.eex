@@ -1,35 +1,32 @@
 <div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
+  <h5><%= gettext "ScriptDrop Software Engineering Interview Project " %></h5>
 </div>
 
 <div class="row marketing">
   <div class="col-lg-6">
-    <h4>Resources</h4>
+    <h4>Technology Used</h4>
     <ul>
       <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
+        Elixir and Phoenix
       </li>
       <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
+        PostgreSQL
       </li>
     </ul>
   </div>
 
   <div class="col-lg-6">
-    <h4>Help</h4>
-    <ul>
-      <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
+    <h4>Credentials to Check the Application</h4>
+    <ul style="display:flex">
+      <li style="width: 50%;">
+        <h6><strong>Pharmacy Login</strong></h6>
+        User Email : pharma1@gmail.Com</br>
+        Password : 123456
       </li>
       <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
+        <h6><strong>Courier Login</strong></h6>
+        User Email : courier1@gmail.Com</br>
+        Password : 123456
       </li>
     </ul>
   </div>

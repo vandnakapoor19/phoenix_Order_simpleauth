@@ -10,32 +10,40 @@
     <title>Hello SimpleAuth!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <!-- Compiled and minified CSS -->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
   </head>
-
   <body>
     <header class="header">
       <nav role="navigation">
-        <ul class="nav nav-pills pull-right">
-          <!--  -->
-
+        <div class="Site-title">
           <%= if @current_user do %>
-            <li><a href="/orders">Orders</a></li>
-            <li><%= @current_user.email %></li>
+            <a href="/"  ><h5 style="float: left;margin: 3%;"><%= @current_user.name %>
+              <%= if @current_user.user_role_id !=3 do %>
+                Pharmacy
+              <% end %>
+
+              <%= if @current_user.user_role_id !=2 do %>
+                Courier
+              <% end %>
+            </h5></a>
+            <% else %>
+              <a href="/"  ><h5 style="float: left;margin: 3%;">Home</a>
+            <% end %>
+        </div>
+        <ul class="nav nav-pills pull-right">
+          <%= if @current_user do %>
+
+            <li>Welcome <%= @current_user.email %> </li>
+            <li><a href="/orders"  >Orders</a></li>
             <%= if @current_user.user_role_id !=3 do %>
-                <li><a href="/orders/new">Create Order</a></li>
+                <li><a href="/orders/new" >Create Order</a></li>
               <% else %>
               <% end %>
             <li>
-              <%= link "Sign out", to: session_path(@conn, :delete,
-                                                    @current_user),
-                                   method: "delete" %>
-
+              <%= link "Sign out", to: session_path(@conn, :delete, @current_user), method: "delete" %>
             </li>
           <% else %>
-            <li><%= link "Register", to: user_path(@conn, :new) %></li>
+            <!-- <li><%= link "Register", to: user_path(@conn, :new) %></li> -->
             <li><%= link "Sign in", to: session_path(@conn, :new) %></li>
           <% end %>
         </ul>

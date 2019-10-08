@@ -1,11 +1,4 @@
 <%= form_for @changeset , order_path(@conn, :create), fn f -> %>
-<div class="upper-info">
-<div class="Cancel-button ">
-  <a href="/orders" class="btn btn-primary btn-back ">Back</a>
-</div>
-
-<a href="/orders" class="btn btn-primary ">cancel</a>
-</div>
 
 <div class="patient_form">
   <h5>Patient Details</h5> &nbsp
@@ -73,13 +66,13 @@
 
   <div class="form-row ">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Pickup Date <span class=info>(Date format should be (YY-DD-MM like 2012-02-11)</span></label>
-      <%= text_input f, :pickup_date, class: "form-control" %>
+      <label for="inputEmail4">Pickup Date </label>
+      <%= text_input f, :pickup_date, class: "form-control" ,  type: "date"  %>
       <%= error_tag f, :pickup_date %>
     </div>
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Pickup Time</label>
-      <%= text_input f, :pickup_time, class: "form-control" %>
+      <label for="inputEmail4">Pickup Time<span class=info>(Time format should be (HH:MM like 07:20 in 24 hours Format)</span></label>
+      <%= text_input f, :pickup_time, class: "form-control", id: "form_time" %>
       <%= error_tag f, :pickup_time %>
     </div>
   </div>

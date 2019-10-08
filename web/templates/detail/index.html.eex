@@ -2,13 +2,40 @@
   <details open>
     <summary>Action</summary>
     <ul class="summary-nav">
-      <%= if @current_user.user_role_id !=3 do %>
-        <li><a class= "btn-sm btn-primary " href=<%= detail_path(@conn, :edit, @order) %>>Cancel</a></li>
+      <!-- # Fetching all the order_role from order status table
+    </br>
+      # 1 : New
+      # 2 : Canceled
+      # 3: Delivered
+      # 4: Undelivered
+      </br> -->
+      <%= if @current_user.user_role_id !=3 && @order.order_status !=2 && @order.order_status !=3 && @order.order_status !=4 do %>
+        <li> <a class= "btn-sm btn-primary " href=<%= detail_path(@conn, :edit, @order) %> >Cancel</a></li>
         <li><a class= "btn-sm btn-primary " href=<%= order_path(@conn, :edit, @order) %> >Edit</a></li>
       <% else %>
-        <%= form_for @changeset,  order_path(@conn, :update, @order), [id: "some-id"], fn f -> %>
-          <%= hidden_input f, :order_status, value: "3" , class: "form-control" %>
-          <%= submit "Delivered", class: "btn-sm btn-primary pull-right" %>
+        <%= if @order.order_status ==4 do %>
+        <span class= "Undelivered">  Order is UnDelivered </span>
+        <% else %>
+        <%= if @order.order_status ==3 do %>
+          <span class= "done">  Order is Delivered </span>
+            <% else %>
+            <%= if @order.order_status ==2 do %>
+              <span class= "done">  Order is Canceled </span>
+                <% else %>
+              <%= if @order.order_status !=3 do %>
+                      <%= form_for @changeset,  order_path(@conn, :update, @order), [id: "form-undeliver"], fn f -> %>
+                        <%= hidden_input f, :order_status, value: "3" , class: "form-control" %>
+                        <%= submit "Delivered", class: "btn-sm btn-primary pull-right detail-deliver" %>
+                      <% end %>
+                <% end %>
+                <%= if @order.order_status !=4 do %>
+                    <%= form_for @changeset,  order_path(@conn, :update, @order), [id: "some-id"], fn f -> %>
+                      <%= hidden_input f, :order_status, value: "4" , class: "form-control" %>
+                      <%= submit "UnDelivered", class: "btn-sm btn-primary pull-right detail-deliver" %>
+                  <% end %>
+                <% end %>
+                <% end %>
+            <% end %>
         <% end %>
       <% end %>
     </ul>
@@ -19,7 +46,7 @@
     <table>
       <tr>
         <th scope="row">Pickup Date & Time</th>
-        <td><%= @order.pickup_time %><%= @order.pickup_time %> </td>
+        <td><%= @order.pickup_date %>-<%= @order.pickup_time %> </td>
       </tr>
       <tr>
         <th scope="row">Order Number</th>

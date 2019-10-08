@@ -1,5 +1,6 @@
+<h4>Today's Order</h4>
 <table>
-  <tr>
+  <tr style="background-color: #d7d0d0;">
     <th>Order #</th>
     <th>Patient Name</th>
     <th>Contact Number</th>
@@ -15,8 +16,21 @@
     <td><%= order.patient_contact %></td>
     <td><%= order.pickup_date %></td>
     <td><%= order.pickup_time %></td>
-    <td><%= Vandna %></td>
-    <td><%= Active %></td>
+    <td><%= @current_user.email %></td>
+    <td>
+      <%= if order.order_status == 1 do %>
+        <span class="new">New</span>
+      <% end %>
+      <%= if order.order_status == 2 do %>
+        <span class= "Cancel">Canceled</span>
+      <% end %>
+      <%= if order.order_status == 3 do %>
+        <span class= " done">Delivered</span>
+      <% end %>
+      <%= if order.order_status == 4 do %>
+        <span class= "Undelivered">Undelivered</span>
+      <% end %>
+    </td>
 
     </tr>
 

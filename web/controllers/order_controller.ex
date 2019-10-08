@@ -13,21 +13,56 @@ defmodule SimpleAuth.OrderController do
    end
 
   def index(conn, _params, current_user) do
+    cond do
+      # 1 is for admin.
+     current_user.user_role_id == 1 ->
+        showOrders(conn, _params, current_user)
+        # 2 is for Pharma.
+     current_user.user_role_id == 2 ->
+         showpharmacy(conn, _params, current_user)
+         # 3 is for courier.
+      current_user.user_role_id == 3 ->
+          showcourier(conn, _params, current_user)
+        end
+    end
+
+  def showpharmacy(conn, _params, current_user) do
+    query = from(m in Order, where: m.user_id == ^current_user.id)
+    orders =  Repo.all(query)
+
+    courier  =  Repo.all(User)
+    render conn, "index.html", orders: orders , courier: courier
+  end
+
+  def showcourier(conn, _params, current_user) do
+
+    user_id = current_user.id
+    query = from(m in Order, where: m.courier_id == ^user_id)
+    orders =  Repo.all(query)
+
+    courier  =  Repo.all(User)
+    render conn, "index.html", orders: orders , courier: courier
+  end
+
+  def showOrders(conn, _params, current_user) do
     orders =  Repo.all(Order)
     courier  =  Repo.all(User)
     render conn, "index.html", orders: orders , courier: courier
   end
 
   def new(conn, _params, current_user) do
-      courier  =  Repo.all(User)
-    changeset = Order.changeset(%Order{}, %{})
+    query = from(u in User, where: u.user_role_id == 3)
+    courier  =  Repo.all(query)
 
-      render conn, "new.html", changeset: changeset , courier: courier
+    changeset = Order.changeset(%Order{}, %{})
+    render conn, "new.html", changeset: changeset , courier: courier
   end
 
   def create(conn, %{"order"=>order}, current_user) do
     # changeset = Order.changeset(%Order{}, order)
-      courier  =  Repo.all(User)
+    query = from(u in User, where: u.user_role_id == 3)
+    courier  =  Repo.all(query)
+
       changeset =
       current_user
       |> build_assoc(:orders)

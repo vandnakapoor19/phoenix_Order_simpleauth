@@ -66,7 +66,7 @@
   <div class="form-row ">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Pickup Date <span class=info>(Date format should be (YY-DD-MM like 2012-02-11)</span></label>
-      <%= text_input f, :pickup_date, class: "form-control" %>
+      <%= text_input f, :pickup_date, class: "form-control" , type: "date" %>
       <%= error_tag f, :pickup_date %>
     </div>
     <div class="form-group col-md-6">

@@ -1,11 +1,12 @@
 defmodule SimpleAuth.Order do
 use SimpleAuth.Web, :model
+
 @alphabet Enum.concat([?0..?9, ?A..?Z, ?a..?z])
 
   schema "orders" do
     field :patient_name, :string
     field :patient_address, :string, default: ""
-    field :patient_contact, :integer
+    field :patient_contact, :string
     field :patient_email, :string
     field :pickup_date, :date
     field :patient_state, :string, default: ""
@@ -19,6 +20,7 @@ use SimpleAuth.Web, :model
     field :order_details, :string
     field :order_cancel_description, :string
 
+    timestamps()
      # has_many  :users, SimpleAuth.User
       # belongs_to :users, SimpleAuth.User
 
@@ -43,6 +45,7 @@ use SimpleAuth.Web, :model
         :order_cancel_description])
     |> validate_required(:patient_name)
     |> generate_random_number
+
   end
 
   def generate_random_number(struct) do

@@ -5,7 +5,7 @@ defmodule SimpleAuth.Repo.Migrations.Order do
     create table(:orders)do
         add :patient_name, :string
         add :order_number, :string
-        add :patient_contact, :integer
+        add :patient_contact, :string
         add :patient_email, :string
         add :patient_address, :string
         add :patient_state, :string
