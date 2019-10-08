@@ -235,8 +235,29 @@ color: red !important;
 #form-undeliver{
     float: right;
     width: 7%;
+    margin-right: 1%;margin-left: 82%;
 }
 
-td, th {
+#order-record td, th {
     text-align: center !important;
+}
+.cancel-description{
+  text-align: center;
+      overflow-y: scroll;
+      width: 50%;
+      margin: 0 auto;
+      overflow-wrap: break-word;
+      max-height: 54px;
+
+  }
+.btn.btn-primary.cancel-btn {
+    background-color: gray;
+}
+  .btn.btn-primary.create-btn{
+    background-color: green;
+  }
+
+.pharma-info-view{
+  float: right;
+  width: 100%;
 }

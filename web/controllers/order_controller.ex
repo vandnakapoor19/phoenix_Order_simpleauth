@@ -27,7 +27,7 @@ defmodule SimpleAuth.OrderController do
     end
 
   def showpharmacy(conn, _params, current_user) do
-    query = from(m in Order, where: m.user_id == ^current_user.id)
+    query = from(m in Order, where: m.user_id == ^current_user.id , order_by: m.inserted_at)
     orders =  Repo.all(query)
 
     courier  =  Repo.all(User)
@@ -37,8 +37,11 @@ defmodule SimpleAuth.OrderController do
   def showcourier(conn, _params, current_user) do
 
     user_id = current_user.id
-    query = from(m in Order, where: m.courier_id == ^user_id)
-    orders =  Repo.all(query)
+     query = from(m in Order, where: m.courier_id == ^user_id , order_by: m.inserted_at )
+
+     orders =  Repo.all(query)
+    # orders =  Order  |> order_by(desc: :inserted_at)  |> Repo.all()
+
 
     courier  =  Repo.all(User)
     render conn, "index.html", orders: orders , courier: courier

@@ -1,12 +1,11 @@
 <h4>Today's Order</h4>
-<table>
+<table id="order-record">
   <tr style="background-color: #d7d0d0;">
     <th>Order #</th>
     <th>Patient Name</th>
     <th>Contact Number</th>
     <th>Pickup Date</th>
     <th>Pickup Time</th>
-    <th>Created By</th>
     <th>Order Status</th>
     </tr>
   <%= for order <-@orders do %>
@@ -15,8 +14,7 @@
     <td><%= order.patient_name %></td>
     <td><%= order.patient_contact %></td>
     <td><%= order.pickup_date %></td>
-    <td><%= order.pickup_time %></td>
-    <td><%= @current_user.email %></td>
+    <td><%= order.inserted_at %></td>
     <td>
       <%= if order.order_status == 1 do %>
         <span class="new">New</span>

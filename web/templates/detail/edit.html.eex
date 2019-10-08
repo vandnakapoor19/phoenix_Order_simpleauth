@@ -11,8 +11,8 @@
   </div>
 </div>
 <div class="Cancel-button">
-  <a href="/orders" class="btn btn-primary btn-back" style="background-color: gray;">Back</a>
+  <a href="/orders" class="btn btn-primary btn-back cancel-btn">Cancel</a>
 </div>
 
-<%= submit "Submit", class: "btn btn-primary pull-right" %>
+<%= submit "Submit", class: "btn btn-primary pull-right create-btn" %>
 <% end %>

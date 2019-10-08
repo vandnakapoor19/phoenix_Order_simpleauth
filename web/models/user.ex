@@ -8,6 +8,10 @@ defmodule SimpleAuth.User do
     field :password_hash, :string
     field :is_admin, :boolean, default: true
     field :user_role_id, :integer, default: 1
+    field :address , :string
+    field :state , :string
+    field :city , :string
+    field :zipcode, :integer
 
     has_many :orders, SimpleAuth.Order
 
@@ -18,7 +22,7 @@ defmodule SimpleAuth.User do
   Builds a changeset based on the `struct` and `params`.
   """
   @required_fields ~w(email)a
-  @optional_fields ~w(name is_admin user_role_id)a
+  @optional_fields ~w(name is_admin user_role_id address state city zipcode)a
 
   def changeset(struct, params \\ %{}) do
     struct
@@ -32,7 +36,6 @@ defmodule SimpleAuth.User do
    |> cast(params, ~w(password)a, [])
    |> validate_length(:password, min: 6, max: 100)
    |> hash_password
-   |> user_role
  end
 
  defp user_role(struct) do

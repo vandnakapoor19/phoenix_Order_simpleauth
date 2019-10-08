@@ -20,12 +20,21 @@
     <ul style="display:flex">
       <li style="width: 50%;">
         <h6><strong>Pharmacy Login</strong></h6>
-        User Email : pharma1@gmail.Com</br>
+        User Email : betterrd@test.com</br>
         Password : 123456
+      </br></br>
+      User Email : restrx@test.com</br>
+      Password : 123456
+    </br></br>
+    User Email : drugsrus@test.com</br>
+    Password : 123456
+
       </li>
       <li>
         <h6><strong>Courier Login</strong></h6>
-        User Email : courier1@gmail.Com</br>
+        User Email : sameday@test.com</br>
+        Password : 123456</br></br>
+        User Email : previous@test.com</br>
         Password : 123456
       </li>
     </ul>

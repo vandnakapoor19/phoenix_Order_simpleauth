@@ -57,7 +57,7 @@
   <div class="form-row ">
     <div class="form-group col-md-12">
       <%= if user = assigns[:courier] do %>
-      <%= select f, :courier_id, Enum.map(@courier, &{&1.email, &1.id}), prompt: "Select Courier Provider", id: "CourierField" ,class: "form-control" %>
+      <%= select f, :courier_id, Enum.map(@courier, &{&1.name, &1.id}), prompt: "Select Courier Provider", id: "CourierField" ,class: "form-control" %>
       <%= error_tag f, :Courier_id %>
         <% end %>
     </div>
@@ -65,7 +65,7 @@
 
   <div class="form-row ">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Pickup Date <span class=info>(Date format should be (YY-DD-MM like 2012-02-11)</span></label>
+      <label for="inputEmail4">Pickup Date <span class=info>(Please enter time in HH.MM format)</span></label>
       <%= text_input f, :pickup_date, class: "form-control" , type: "date" %>
       <%= error_tag f, :pickup_date %>
     </div>
@@ -84,9 +84,9 @@
   </div>
 </div>
 <div class="Cancel-button">
-  <a href="/orders" class="btn btn-primary btn-back" style="background-color: gray;">Back</a>
+  <a href="/orders" class="btn btn-primary btn-back cancel-btn">Cancel</a>
 </div>
 
 
-<%= submit "Update Order", class: "btn btn-primary pull-right" %>
+<%= submit "Update Order", class: "btn btn-primary pull-right create-btn" %>
 <% end %>
