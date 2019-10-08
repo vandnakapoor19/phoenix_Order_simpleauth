@@ -21,7 +21,7 @@
 
 
 # How could we change the project to be more interesting?
-##### I can visualize this use case as a typical business process management and case management platform which should seamlessly integrate communication between script-drop, drug, pharma, and end customer.
+#### I can visualize this use case as a typical business process management and case management platform which should seamlessly integrate communication between script-drop, drug, pharma, and end customer.
 #### The platform should also support Omnichannel to provide a frictionless experience to end customers.
 https://www.pega.com/products/crm-applications/customer-service/omnichannel-experience
 
