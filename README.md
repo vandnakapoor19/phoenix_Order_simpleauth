@@ -3,12 +3,28 @@
 #### The transition to Elixir platform is swift. As expected, starting 2-3 days were challenging but on 5th day I’m more comfortable and confident on it.
 #### Below are few of challenges:
 
--A Setting development environment on Windows machine.
--B Routing & Session management using plugs.
--C Date and time implementation using Timex.
--D Understand the difference between OOP and Funtional programing.
+- Setting development environment on Windows machine.
+- Routing & Session management using plugs.
+- Date and time implementation using Timex.
+- Understand the difference between OOP and Funtional programing.
 
-To start your Phoenix app:
+
+# What would be your next couple of tasks if you had more time?
+
+- Primarily I would like to improve UX.
+- Internal user use case implantation.
+- Addition of data Validation on UI, order filter, pagination, email notification.
+- Validate Address using USPS REST service call.
+- Fuzzy logic to match courier with pharma service provider based on location.
+- Integration of Google map & delivery tracking for all roles.
+- Code Coverage, which is important aspect of any project for CICD.
+
+
+# How could we change the project to be more interesting?
+#### I can visualize this use case as a typical business process management and case management platform which should seamlessly integrate communication between script-drop, drug, pharma, and end customer.
+#### The platform should also support Omnichannel to provide a frictionless experience to end customers.
+https://www.pega.com/products/crm-applications/customer-service/omnichannel-experience
+
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
