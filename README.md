@@ -1,18 +1,18 @@
 # What was the hardest part of the implementation?
 
-#### The transition to Elixir platform is swift. As expected, intial 2-3 days were challenging but on 5th day I’m more comfortable and confident on it.
-#### Below are few of challenges:
+#### The transition to the Elixir platform is swift. As expected, the initial 2-3 days were challenging, but on the 5th day, I’m more comfortable and confident in it.
+#### Below are a few challenges:
 
 - Setting development environment on Windows machine.
 - Routing & Session management using plugs.
 - Date and time implementation using Timex.
-- Understand the difference between OOP and Funtional programing.
+- Understand the difference between OOP and Functional programming.
 
 
 # What would be your next couple of tasks if you had more time?
 
 - Primarily I would like to improve UX.
-- Internal user use case implantation.
+- The internal user uses case implantation.
 - Addition of data Validation on UI, order filter, pagination, email notification.
 - Validate Address using USPS REST service call.
 - Fuzzy logic to match courier with pharma service provider based on location.
@@ -23,7 +23,6 @@
 # How could we change the project to be more interesting?
 #### I can visualize this use case as a typical business process management and case management platform which should seamlessly integrate communication between script-drop, drug, pharma, and end customer.
 #### The platform should also support Omnichannel to provide a frictionless experience to end customers.
-https://www.pega.com/products/crm-applications/customer-service/omnichannel-experience
 
 
   * Install dependencies with `mix deps.get`
