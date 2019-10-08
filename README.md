@@ -10,8 +10,7 @@
 
 
 # What would be your next couple of tasks if you had more time?
-
-- Primarily I would like to improve UX.
+####  Primarily I would like to improve UX.
 - The internal user uses case implantation.
 - Addition of data Validation on UI, order filter, pagination, email notification.
 - Validate Address using USPS REST service call.
