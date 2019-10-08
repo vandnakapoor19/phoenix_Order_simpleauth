@@ -11,7 +11,7 @@
 
 # What would be your next couple of tasks if you had more time?
 ####  Primarily I would like to improve UX.
-- The internal user uses case implantation.
+- The internal user uses case implementation.
 - Addition of data Validation on UI, order filter, pagination, email notification.
 - Validate Address using USPS REST service call.
 - Fuzzy logic to match courier with pharma service provider based on location.
