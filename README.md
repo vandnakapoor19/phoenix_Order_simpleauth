@@ -1,4 +1,12 @@
-# SimpleAuth
+# What was the hardest part of the implementation?
+
+#### The transition to Elixir platform is swift. As expected, starting 2-3 days were challenging but on 5th day I’m more comfortable and confident on it.
+#### Below are few of challenges:
+
+-A Setting development environment on Windows machine.
+-B Routing & Session management using plugs.
+-C Date and time implementation using Timex.
+-D Understand the difference between OOP and Funtional programing.
 
 To start your Phoenix app:
 
